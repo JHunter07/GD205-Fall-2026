@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem; //we add this directive to add on the new input system
 
@@ -6,6 +7,8 @@ public class PrimitiveMove : MonoBehaviour //this incorporates the name we gave 
     InputAction moveAction; //create a new InputAction object called moveAction
     int bobsAge; //basic variable example
     public Transform enemy;
+    public Transform redport;
+    public Transform BlueBoard;
         // public means you can access it outside of the script
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,7 +31,7 @@ public class PrimitiveMove : MonoBehaviour //this incorporates the name we gave 
 
         //Debug.Log operates like println() in Processing
         //so we will send these values to our console so we can compare
-       // Debug.Log(rawMove);
+        // Debug.Log(rawMove);
 
         //We can use InputAction.WasPressedThisFrame() to check if this input was newly input
         //because we only want it to move based on a new press and not from holding it down
@@ -46,9 +49,19 @@ public class PrimitiveMove : MonoBehaviour //this incorporates the name we gave 
         }
         if (transform.position == enemy.position) {
             Debug.Log("dkjfhdkejhfehfdjk");
-            transform.position = new Vector3(-2, 1, 3);
+            transform.position = new Vector3(18, 1, 7);
             //Destroy(enemy.gameObject);
             enemy.position = new Vector3(500, 500, 500);
         }
+       // for (int i = 0; i < 15; i++)
+       //{
+
+            if (transform.position + new Vector3(0f, -1, 0) == BlueBoard.position)
+            {
+                Debug.Log("instanttransmission");
+                transform.position = BlueBoard.position + new Vector3(0f, 1f, 0f);
+            }
+       // }
+    
     }
 }
